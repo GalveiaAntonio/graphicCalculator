@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fx Calculator — Free Scientific, Basic & Graphing Calculator</title>
+
+
+    <meta name="description"
+        content="Free online calculator with basic, scientific, and graphing modes. Calculate expressions, trigonometric functions, powers, factorials, and graphs.">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="author" content="fx">
+
+    <link rel="canonical" href=""> <!--MUDAR-->
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="fx Calculator — Free Scientific & Graphing Calculator">
+    <meta property="og:description" content="A free online calculator with basic, scientific, and graphing modes.">
+    <meta property="og:url" content=""> <!--MUDAR-->
+    <meta property="og:site_name" content="fx Calculator">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <p class="logo">f<span>(x)</span></p>
+        <div class="tabs">
+            <button class="tab" id="tabSimple">Basic</button>
+            <button class="tab active" id="tabSci">Scientific</button>
+            <button class="tab" id="tabGraph">Graph</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="panel mode-sci">
+            <div class="history" id="history"></div>
+
+            <div class="graph-wrap" id="graphWrap">
+                <div class="graph-card">
+                    <canvas id="graphCanvas"></canvas>
+                    <div class="graph-controls">
+                        <p id="rangeLabel">x ∈ [-10, 10]</p>
+                        <div class="zoom-group">
+                            <button class="zoom-btn" id="zoomOut" aria-label="Zoom Out">-</button>
+                            <button class="zoom-btn" id="zoomReset" aria-label="Reset graph zoom">⟲</button>
+                            <button class="zoom-btn" id="zoomIn" aria-label="Zoom In">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="display">
+                <div class="expr-label" id="exprLabel"></div>
+                <div class="preview" id="preview"></div>
+                <div class="expr" id="expr"></div>
+            </div>
+
+
+
+
+            <div class="sci-pad">
+                <button data-action="second" id="btn2nd" aria-label="Second Function">2nd</button>
+                <button data-action="deg" id="btnDeg" aria-label="Toggle degrees and radians">DEG</button>
+                <button data-action="insert" data-insert="(" aria-label="Open parenthesis">(</button>
+                <button data-action="insert" data-insert=")" aria-label="Close parenthesis">)</button>
+                <button data-action="insert" data-insert="π" aria-label="Pi">π</button>
+                <button data-action="insert" data-insert="e" aria-label="Euler's Number">e</button>
+
+                <button data-action="func" id="btnSin" data-insert="sin(" data-alt="asin("
+                    aria-label="Sine">sin</button>
+                <button data-action="func" id="btnCos" data-insert="cos(" data-alt="acos("
+                    aria-label="Cosine">cos</button>
+                <button data-action="func" id="btnTan" data-insert="tan(" data-alt="atan("
+                    aria-label="Tangent">tan</button>
+                <button data-action="func" id="btnLn" data-insert="ln(" data-alt="e^"
+                    aria-label="Natural logarithm">ln</button>
+                <button data-action="func" id="btnLog" data-insert="log(" data-alt="10^"
+                    aria-label="Base 10 logarithm">log</button>
+                <button data-action="func" id="btnSqrt" data-insert="√(" data-alt="∛("
+                    aria-label="Square root">√</button>
+
+                <button data-action="insert" data-insert="^2" aria-label="Square">x²</button>
+                <button data-action="insert" data-insert="^" aria-label="Power">x^y</button>
+                <button data-action="insert" data-insert="!" aria-label="Factorial">n!</button>
+                <button data-action="insert" data-insert="^(-1)" aria-label="Reciprocal">1/x</button>
+                <button data-action="insert" data-insert="%" aria-label="Percent">%</button>
+                <button data-action="sign" aria-label="Change sign">±</button>
+
+                <button data-action="mc" aria-label="Clear Memory">MC</button>
+                <button data-action="mr" aria-label="Recall Memory">MR</button>
+                <button data-action="mplus" aria-label="Add to memory">M+</button>
+                <button data-action="insert" data-insert="x" aria-label="Variable x">x</button>
+                <button data-action="clear" aria-label="All Clear">AC</button>
+                <button data-action="back" aria-label="Backspace">⌫</button>
+            </div>
+
+
+
+
+            <div class="num-pad">
+                <button data-action="insert" data-insert="7">7</button>
+                <button data-action="insert" data-insert="8">8</button>
+                <button data-action="insert" data-insert="9">9</button>
+                <button data-action="insert" data-insert="÷" aria-label="Divide">÷</button>
+
+                <button data-action="insert" data-insert="4">4</button>
+                <button data-action="insert" data-insert="5">5</button>
+                <button data-action="insert" data-insert="6">6</button>
+                <button data-action="insert" data-insert="×" aria-label="Multiply">×</button>
+
+                <button data-action="insert" data-insert="1">1</button>
+                <button data-action="insert" data-insert="2">2</button>
+                <button data-action="insert" data-insert="3">3</button>
+                <button data-action="insert" data-insert="−" aria-label="Subtract">−</button>
+
+                <button data-action="insert" data-insert="0">0</button>
+                <button data-action="insert" data-insert="." aria-label="Decimal point">.</button>
+                <button class="equals" data-action="equals" aria-label="Equals">=</button>
+                <button data-action="insert" data-insert="+" aria-label="Add">+</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <p> <span class="mem-dot" id="memDot"></span>Mode <b id="footMode">DEG</b> · Enter = "=" · Esc = "AC" </p>
+            <p>fx v1.0</p>
+        </div>
+        <div class="footer-credit">
+            <p>© 2026 <a href="https://galveiadev.vercel.app/" target="_blank" style="text-decoration: none; color: var(--ink);">Antonio Galveia</a> · All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
